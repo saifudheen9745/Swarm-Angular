@@ -10,7 +10,7 @@ export class LoginServiceService {
   emailError: BehaviorSubject<string> = new BehaviorSubject('');
   passwordError: BehaviorSubject<string> = new BehaviorSubject('');
 
-  constructor(private api:HttpClient) {}
+  constructor() {}
 
   //To validate the email entered by the user
   validateEmail = (email: string): void => {

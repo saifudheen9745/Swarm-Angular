@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginServiceService } from './services/login-service.service';
 import { ToastCollectionService } from 'src/app/shared/services/toast/toast-collection.service';
+import { FirebaseService } from 'src/firebase/firebase.service';
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +13,7 @@ export class LoginPageComponent {
   password: string;
   emailError: string;
   passwordError: string;
-  constructor(private loginService: LoginServiceService, private toasts:ToastCollectionService) {}
+  constructor(private loginService: LoginServiceService, private toasts:ToastCollectionService, private googleAuth:FirebaseService) {}
 
   validateEmail = () => {
     this.loginService.validateEmail(this.email);
@@ -33,5 +34,9 @@ export class LoginPageComponent {
     }else{
       this.toasts.successToast()
     }
+  }
+
+  google = ()=>{
+    this.googleAuth.loginWithGoogle()
   }
 }
