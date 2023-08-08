@@ -66,24 +66,30 @@
           <hr class="w-full text-blue-50  mt-3 ml-2" />
         </div>
       </div>
-      <form onSubmit="{handleSubmitForm}">
+      <form (ngSubmit)="loginFormSubmit()">
         <div class="mt-5 px-6">
           <input
+            (keyup)="validateEmail()"
+            [(ngModel)]="email"
             name="email"
             value=""
             type="text"
             placeholder="Email,Mobile"
             class="rounded-lg p-2  w-full "
           /><br />
+          <p class="text-red-700">{{emailError}}</p>
         </div>
         <div class="mt-5 px-6">
           <input
+            (keyup)="validatePassword()"
+            [(ngModel)]="password"
             name="password"
             value=""
             type="text"
             placeholder="Password"
             class="rounded-lg p-2  w-full "
           /><br />
+          <p class="text-red-700">{{passwordError}}</p>
         </div>
         <div class="mt-5 px-5 text-white hover:text-green-900">
           <p>Forgot Password?</p>

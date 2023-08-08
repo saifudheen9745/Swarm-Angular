@@ -6,7 +6,7 @@ import { LandingPageComponent } from './landing-page.component';
 const routes: Routes = [{ path: '', component: LandingPageComponent }];
 
 @NgModule({
-  declarations: [],
+  declarations: [LandingPageComponent],
   imports: [CommonModule, RouterModule.forChild(routes)],
 })
 export class LandingPageModule {}

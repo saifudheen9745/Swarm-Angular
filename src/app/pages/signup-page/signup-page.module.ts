@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule,Routes } from '@angular/router';
 import { SignupPageComponent } from './signup-page.component';
+import { FormsModule } from '@angular/forms';
 
 const routes:Routes = [
   {path:'',component:SignupPageComponent}
@@ -10,6 +11,7 @@ const routes:Routes = [
 @NgModule({
   declarations: [SignupPageComponent],
   imports: [
+    FormsModule,
     CommonModule,
     RouterModule.forChild(routes)
   ]

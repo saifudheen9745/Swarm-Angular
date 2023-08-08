@@ -60,65 +60,70 @@
         </div>
       </div>
 
-      <form onSubmit="{handleSubmit}">
+      <form (ngSubmit)="submitSignupForm()">
         <div class="mt-5">
           <input
+            (keyup)="validateFullName()"
             name="fname"
-           
+            [(ngModel)]="SignUpDetails.fullName"
             value=""
             type="text"
             placeholder="Full Name"
             class="rounded-lg p-2  w-full "
           /><br />
-          <p class="text-red-600"></p>
+          <p class="text-red-600">{{SignupErrorDetails.fullName}}</p>
         </div>
 
         <div class="mt-5 ">
           <div>
             <input
+              (keyup)="validateEmail()"
               name="email"
-              
+              [(ngModel)]="SignUpDetails.email"
               value=""
               type="text"
               placeholder="Email"
               class="rounded-lg p-2  w-full "
             /><br />
-            <p class="text-red-600"></p>
+            <p class="text-red-600">{{SignupErrorDetails.email}}</p>
           </div>
           <div>
             <input
+            (keyup)="validateMobile()"
               name="mobile"
-              
+              [(ngModel)]="SignUpDetails.mobile"
               value=""
               type="text"
               placeholder="Mobile"
               class="mt-5 rounded-lg p-2  w-full"
             />
-            <p class="text-red-600"></p>
+            <p class="text-red-600">{{SignupErrorDetails.mobile}}</p>
           </div>
         </div>
         <div class="mt-5 ">
           <div>
             <input
+            (keyup)="validatePassword()"
               name="password"
-              
+              [(ngModel)]="SignUpDetails.password"
               value=""
               type="text"
               placeholder="Password"
               class="rounded-lg p-2  w-full "
             /><br />
-            <p class="text-red-600"></p>
+            <p class="text-red-600">{{SignupErrorDetails.password}}</p>
           </div>
           <div>
             <input
+              (keyup)="validateConfirmPassword()"
               name="cnfpassword"
-              
+              [(ngModel)]="SignUpDetails.confirmPassword"
               value=""
               type="text"
               placeholder="Confirm Password"
               class="mt-5 rounded-lg p-2  w-full"
             />
-            <p class="text-red-600"></p>
+            <p class="text-red-600">{{SignupErrorDetails.confirmPassword}}</p>
           </div>
         </div>
         <div class="mt-5 flex justify-center">
