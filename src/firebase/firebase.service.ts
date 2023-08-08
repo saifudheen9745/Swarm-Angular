@@ -1,16 +1,16 @@
 import { Injectable, OnInit } from '@angular/core';
-
+import { environment } from 'src/environments/environment.prod';
 import * as firebase from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAytzUJej-AHX6C0UG875O30G697gWbe18',
-  authDomain: 'swarm-615d0.firebaseapp.com',
-  projectId: 'swarm-615d0',
-  storageBucket: 'swarm-615d0.appspot.com',
-  messagingSenderId: '3074624752',
-  appId: '1:3074624752:web:fe1cdeca07024779664635',
-  measurementId: 'G-3E3XFEGKZE',
+  apiKey: environment.FIREBASE_API_KEY,
+  authDomain: environment.AUTH_DOMAIN,
+  projectId: environment.PROJECT_ID,
+  storageBucket: environment.STORAGE_BUCKET,
+  messagingSenderId: environment.MESSAGING_SENDER_ID,
+  appId: environment.APP_ID,
+  measurementId: environment.MEASUREMENT_ID,
 };
 @Injectable({
   providedIn: 'root',
