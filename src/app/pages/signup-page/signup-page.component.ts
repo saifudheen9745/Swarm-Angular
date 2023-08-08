@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SignUp } from 'src/app/config/config.types';
+import { FirebaseService } from 'src/firebase/firebase.service';
 
 const spaceRegex = /\s/;
 const numberRegex = /\d/;
@@ -29,10 +30,7 @@ export class SignupPageComponent {
     confirmPassword: null,
   };
 
-
-  constructor() {}
-
-  
+  constructor(private googlAuth: FirebaseService) {}
 
   validateFullName = (): void => {
     if (this.SignUpDetails.fullName != null) {
@@ -103,6 +101,10 @@ export class SignupPageComponent {
       }
     }
   };
+
+  signUpWithgoogle = ()=>{
+    this.googlAuth.loginWithGoogle()
+  }
 
   submitSignupForm = () => {};
 }
