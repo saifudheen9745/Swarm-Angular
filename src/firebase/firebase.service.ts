@@ -15,25 +15,17 @@ const firebaseConfig = {
 @Injectable({
   providedIn: 'root',
 })
-export class FirebaseService implements OnInit {
+export class FirebaseService {
   provider: any;
   auth: any;
+
   constructor() {
     firebase.initializeApp(firebaseConfig);
     this.provider = new GoogleAuthProvider();
     this.auth = getAuth();
   }
 
-  ngOnInit(): void {
-  }
-
-  loginWithGoogle = () => {
-    signInWithPopup(this.auth, this.provider)
-      .then((result) => {
-        console.log(result.user.email);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  loginWithGoogle = async() => {
+    return await signInWithPopup(this.auth, this.provider)
   };
 }
