@@ -15,35 +15,59 @@ export class LoginPageComponent {
   password: string;
   emailError: string;
   passwordError: string;
-  constructor(private loginService: LoginServiceService, private toasts:ToastCollectionService, private googleAuth:FirebaseService) {}
+  constructor(
+    private loginService: LoginServiceService,
+    private toasts: ToastCollectionService,
+    private googleAuth: FirebaseService
+  ) {}
 
   validateEmail = () => {
     const isValid = emailRegex.test(this.email);
     if (isValid) {
       this.emailError = '';
     } else {
-      this.emailError = 'Invalid email'
+      this.emailError = 'Invalid email';
     }
   };
 
   validatePassword = () => {
-    if(this.password.length < 8){
-      this.passwordError = 'Need atleast eight character'
-    }else{
-      this.passwordError = ''
+    if (this.password.length < 8) {
+      this.passwordError = 'Need atleast eight character';
+    } else {
+      this.passwordError = '';
     }
   };
 
-  loginFormSubmit = ()=>{
-    this.loginService.doLogin(this.email,this.password)
-  }
+  loginFormSubmit = () => {
+    if (this.emailError?.length === 0 && this.passwordError?.length === 0) {
+      this.loginService.doLogin(this.email, this.password).subscribe(
+        (data) => {
+          console.log(data);
+        },
+        (error) => {
+          this.toasts.LoginErrorToast(error.error.error.error.msg);
+        }
+      );
+    }else{
+       this.toasts.customErrorToast("All fileds must be provided");
+    }
+  };
 
-  google = ()=>{
-    this.googleAuth.loginWithGoogle().then((data)=>{
-      this.loginService.doGoogleLogin(data?.user?.email as string)
-    }).catch((error)=>{
-      console.log(error);
-      
-    })
-  }
+  handleGoogleLogin = () => {
+    this.googleAuth
+      .loginWithGoogle()
+      .then((data) => {
+        this.loginService.doGoogleLogin(data?.user?.email as string).subscribe(
+          (data) => {
+            console.log(data);
+          },
+          (error) => {
+            this.toasts.customErrorToast(error.error.error.error.msg);
+          }
+        );
+      })
+      .catch((error) => {
+        console.log('from google auth', error);
+      });
+  };
 }

@@ -20,4 +20,25 @@ export class ToastCollectionService {
     })
   }
 
+  customErrorToast = (err:string)=>{
+    this.toastr.error(err, '', {
+      timeOut: 2000,
+      progressAnimation: 'decreasing',
+    });
+  }
+
+  customSuccessToast = (msg:string)=>{
+    this.toastr.success(msg, '', {
+      timeOut: 2000,
+      progressAnimation: 'decreasing',
+    });
+  }
+
+  LoginErrorToast = (err:string)=>{
+    this.toastr.error(err, '', {
+      timeOut: 2000,
+      progressAnimation: 'decreasing',
+    });
+  }
+
 }

@@ -1,5 +1,5 @@
-import { Injectable, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment.prod';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import * as firebase from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
@@ -12,12 +12,13 @@ const firebaseConfig = {
   appId: environment.APP_ID,
   measurementId: environment.MEASUREMENT_ID,
 };
+
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
-  provider: any;
-  auth: any;
+  private provider: any;
+  private auth: any;
 
   constructor() {
     firebase.initializeApp(firebaseConfig);

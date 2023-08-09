@@ -1,7 +1,12 @@
 export interface SignUp {
-  fullName: string | null;
+  fname: string | null;
   email: string | null;
   mobile: string | null;
   password: string | null;
-  confirmPassword: string | null;
+  cnfpassword: string | null;
+}
+
+export interface googleDetails {
+  fname:string,
+  email:string
 }

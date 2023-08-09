@@ -65,13 +65,13 @@
           <input
             (keyup)="validateFullName()"
             name="fname"
-            [(ngModel)]="SignUpDetails.fullName"
+            [(ngModel)]="SignUpDetails.fname"
             value=""
             type="text"
             placeholder="Full Name"
             class="rounded-lg p-2  w-full "
           /><br />
-          <p class="text-red-600">{{SignupErrorDetails.fullName}}</p>
+          <p class="text-red-600">{{SignupErrorDetails.fname}}</p>
         </div>
 
         <div class="mt-5 ">
@@ -117,13 +117,13 @@
             <input
               (keyup)="validateConfirmPassword()"
               name="cnfpassword"
-              [(ngModel)]="SignUpDetails.confirmPassword"
+              [(ngModel)]="SignUpDetails.cnfpassword"
               value=""
               type="text"
               placeholder="Confirm Password"
               class="mt-5 rounded-lg p-2  w-full"
             />
-            <p class="text-red-600">{{SignupErrorDetails.confirmPassword}}</p>
+            <p class="text-red-600">{{SignupErrorDetails.cnfpassword}}</p>
           </div>
         </div>
         <div class="mt-5 flex justify-center">
